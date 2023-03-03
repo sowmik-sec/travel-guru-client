@@ -12,12 +12,12 @@
   text-decoration: none;
   color: black;
 }
-.header button {
+.signup-header button {
   padding: 12px 12px;
   background-color: #f9a51a;
   border: 0;
   border-radius: 10px;
 }
-.header button:hover {
+.signup-header button:hover {
   cursor: pointer;
 }

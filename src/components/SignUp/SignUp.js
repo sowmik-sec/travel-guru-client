@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
 
@@ -21,10 +22,11 @@ const SignUp = () => {
     <div>
       <SignUpHeader />
       <div className="signup-container">
-        <form onSubmit={handleSignUp}>
+        <form className="form" onSubmit={handleSignUp}>
           <h1>Sign Up</h1>
           <label htmlFor="username">Username:</label>
           <input
+            className="input-text"
             type="text"
             id="username"
             name="username"
@@ -35,6 +37,7 @@ const SignUp = () => {
           />
           <label htmlFor="email">Email:</label>
           <input
+            className="input-email"
             type="email"
             id="email"
             name="email"
@@ -45,6 +48,7 @@ const SignUp = () => {
           />
           <label htmlFor="password">Password:</label>
           <input
+            className="input-password"
             type="password"
             id="password"
             name="password"
@@ -55,6 +59,7 @@ const SignUp = () => {
           />
           <label htmlFor="confirm-password">Confirm Password:</label>
           <input
+            className="input-password"
             type="password"
             id="confirm-password"
             name="confirm-password"
@@ -64,6 +69,9 @@ const SignUp = () => {
             required
           />
           {error && <p className="error-message">{error}</p>}
+          <p>
+            Already have an account? <Link to="/signin">Log In</Link>
+          </p>
           <button type="submit">Sign Up</button>
         </form>
       </div>

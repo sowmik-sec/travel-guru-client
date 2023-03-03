@@ -9,7 +9,7 @@ const PlaceDetails = () => {
     <div className="details">
       <img src={img} alt="" />
       <p>{name}</p>
-      <p>{price}</p>
+      <p>${price}</p>
       <p>{details}</p>
       <button className="btn-card">Book Now</button>
     </div>

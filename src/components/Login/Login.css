@@ -1,4 +1,4 @@
-.signup-container {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,6 @@ label {
 }
 
 .input-text,
-.input-email,
 .input-password {
   width: 100%;
   padding: 10px;
@@ -40,12 +39,11 @@ label {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus {
+input[type="password"]:focus {
   border: 2px solid #4caf50;
 }
 
-button[type="submit"] {
+.btn-submit {
   background-color: #4caf50;
   color: white;
   padding: 12px 20px;
@@ -56,11 +54,6 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #3e8e41;
-}
-
-.error-message {
-  color: red;
-  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {
