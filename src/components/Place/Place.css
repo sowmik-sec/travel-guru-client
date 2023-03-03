@@ -10,3 +10,13 @@
   height: 150px;
   border-radius: 20px;
 }
+.btn-card {
+  padding: 12px 12px;
+  margin-top: 20px;
+  background-color: #f9a51a;
+  border: 0;
+  border-radius: 10px;
+}
+.btn-card:hover {
+  cursor: pointer;
+}

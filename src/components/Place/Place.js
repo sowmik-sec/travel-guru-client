@@ -3,7 +3,7 @@ import React from "react";
 import "./Place.css";
 import { Link } from "react-router-dom";
 
-const Place = ({ name, price, details, img }) => {
+const Place = ({ name, price, details, img, id }) => {
   const handleFunction = (name, price, details, img) => {
     console.log(name, price);
   };
@@ -16,8 +16,8 @@ const Place = ({ name, price, details, img }) => {
       <div>{name}</div>
       <div>${price}</div>
       <div>{details}</div>
-      <Link to="placeDetails">
-        <button>View Details</button>
+      <Link to={`placeDetails/${id}`}>
+        <button className="btn-card">View Details</button>
       </Link>
     </div>
   );

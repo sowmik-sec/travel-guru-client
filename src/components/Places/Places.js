@@ -18,6 +18,7 @@ const Places = () => {
           price={place.price}
           details={place.details}
           img={place.img}
+          id={place.id}
         />
       ))}
     </div>

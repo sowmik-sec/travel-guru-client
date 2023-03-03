@@ -1,0 +1,12 @@
+.details {
+  color: white;
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin: 0 auto;
+  height: auto;
+  width: 500px;
+  background-color: #ff7fa6;
+}
+.details img {
+  width: 450px;
+}
