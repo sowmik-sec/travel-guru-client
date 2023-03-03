@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -16,12 +16,17 @@ const SignUp = () => {
 
   const { setUser, googleSignIn, createUser } = useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleGoogleSignIn = () => {
     const googleProvider = new GoogleAuthProvider();
     googleSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => console.error(error));
   };
@@ -35,13 +40,16 @@ const SignUp = () => {
         .then((result) => {
           const user = result.user;
           setUser(user);
+          navigate(from, { replace: true });
           console.log("user logged in");
           setEmail("");
           setPassword("");
           setUsername("");
           setConfirmPassword("");
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+          setError(error.message);
+        });
     }
   };
   return (
