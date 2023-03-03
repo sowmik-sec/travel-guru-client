@@ -1,7 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -74,6 +76,11 @@ const SignUp = () => {
           </p>
           <button type="submit">Sign Up</button>
         </form>
+      </div>
+      <div>
+        <button className="btn-signup">
+          <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
+        </button>
       </div>
     </div>
   );

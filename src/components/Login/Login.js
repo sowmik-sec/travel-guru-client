@@ -1,3 +1,5 @@
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
@@ -44,6 +46,9 @@ export function Login() {
           </button>
         </form>
       </div>
+      <button className="btn-signup">
+        <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
+      </button>
     </div>
   );
 }
