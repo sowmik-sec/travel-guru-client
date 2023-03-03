@@ -36,7 +36,10 @@ const SignUp = () => {
           const user = result.user;
           setUser(user);
           console.log("user logged in");
-          e.target = "";
+          setEmail("");
+          setPassword("");
+          setUsername("");
+          setConfirmPassword("");
         })
         .catch((error) => console.error(error));
     }
