@@ -1,12 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import Logo from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
     <div className="header">
-      <img src="../../assets/images/Rectangle 1.png" alt="" />
-      <input type="text" />
+      <Link to="/">
+        <img id="logo-color" src={Logo} alt="" height={30} />
+      </Link>
+      <input
+        type="text"
+        id="inputId"
+        placeholder={`🔍 Search your destination`}
+        size={20}
+      />
       <Link to="/news">News</Link>
       <Link to="/destination">Destination</Link>
       <Link to="/blog">Blog</Link>

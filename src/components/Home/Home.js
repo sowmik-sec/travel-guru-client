@@ -4,13 +4,8 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="">
-      {/* <Header /> */}
-      <img
-        className="home-img"
-        src={"../../assets/images/Rectangle 1.png"}
-        alt=""
-      />
+    <div className="banner">
+      <Header />
     </div>
   );
 };
