@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
-import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -14,7 +14,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const { setUser, googleSignIn } = useContext(AuthContext);
+  const { setUser, googleSignIn, createUser } = useContext(AuthContext);
 
   const handleGoogleSignIn = () => {
     const googleProvider = new GoogleAuthProvider();
@@ -31,7 +31,12 @@ const SignUp = () => {
     if (password !== confirmPassword) {
       setError("Passwords do not match");
     } else {
-      // perform sign-up logic here
+      createUser(email, password)
+        .then((result) => {
+          const user = result.user;
+          setUser(user);
+        })
+        .catch((error) => console.error(error));
     }
   };
   return (
