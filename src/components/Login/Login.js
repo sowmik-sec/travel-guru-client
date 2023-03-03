@@ -1,13 +1,27 @@
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./Login.css";
 
 export function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setUser, googleSignIn } = useContext(AuthContext);
+
+  const handleGoogleLogIn = () => {
+    const googleProvider = new GoogleAuthProvider();
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +60,7 @@ export function Login() {
           </button>
         </form>
       </div>
-      <button className="btn-signup">
+      <button onClick={handleGoogleLogIn} className="btn-signup">
         <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
       </button>
     </div>

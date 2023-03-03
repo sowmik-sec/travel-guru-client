@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +13,18 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+
+  const { setUser, googleSignIn } = useContext(AuthContext);
+
+  const handleGoogleSignIn = () => {
+    const googleProvider = new GoogleAuthProvider();
+    googleSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -78,7 +92,7 @@ const SignUp = () => {
         </form>
       </div>
       <div>
-        <button className="btn-signup">
+        <button onClick={handleGoogleSignIn} className="btn-signup">
           <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
         </button>
       </div>
