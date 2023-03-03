@@ -5,7 +5,14 @@ import Logo from "../../assets/images/logo.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("user logged out");
+      })
+      .then((error) => console.error(error));
+  };
   return (
     <div className="header">
       <Link to="/">
@@ -22,9 +29,7 @@ const Header = () => {
       <Link to="/blog">Blog</Link>
       <Link to="/contact">Contact</Link>
       {user ? (
-        <Link to="/signout">
-          <button>Sign Out</button>
-        </Link>
+        <button onClick={handleLogOut}>Sign Out</button>
       ) : (
         <>
           <Link to="/signin">

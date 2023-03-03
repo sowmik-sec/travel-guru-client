@@ -5,7 +5,12 @@ import Logo from "../../assets/images/logo.png";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const SignUpHeader = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="signup-header">
       <Link to="/">
@@ -16,9 +21,7 @@ const SignUpHeader = () => {
       <Link to="/blog">Blog</Link>
       <Link to="/contact">Contact</Link>
       {user ? (
-        <Link to="/signout">
-          <button>Sign Out</button>
-        </Link>
+        <button onClick={handleLogOut}>Sign Out</button>
       ) : (
         <>
           <Link to="/signin">

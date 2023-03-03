@@ -29,6 +29,8 @@ export function Login() {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        setEmail("");
+        setPassword("");
       })
       .catch((error) => console.error(error));
   };

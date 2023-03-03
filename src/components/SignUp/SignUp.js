@@ -35,6 +35,8 @@ const SignUp = () => {
         .then((result) => {
           const user = result.user;
           setUser(user);
+          console.log("user logged in");
+          e.target = "";
         })
         .catch((error) => console.error(error));
     }
