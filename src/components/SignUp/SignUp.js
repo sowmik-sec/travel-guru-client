@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./SignUp.css";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
@@ -93,7 +93,7 @@ const SignUp = () => {
       </div>
       <div>
         <button onClick={handleGoogleSignIn} className="btn-signup">
-          <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
+          <FontAwesomeIcon icon={faGoogle} /> Continue with Google
         </button>
       </div>
     </div>

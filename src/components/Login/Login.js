@@ -1,4 +1,4 @@
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
@@ -61,7 +61,7 @@ export function Login() {
         </form>
       </div>
       <button onClick={handleGoogleLogIn} className="btn-signup">
-        <FontAwesomeIcon icon={faFacebook} /> Continue with Facebook
+        <FontAwesomeIcon icon={faGoogle} /> Continue with Google
       </button>
     </div>
   );
