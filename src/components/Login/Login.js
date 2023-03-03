@@ -8,10 +8,10 @@ import SignUpHeader from "../SignUpHeader/SignUpHeader";
 import "./Login.css";
 
 export function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setUser, googleSignIn } = useContext(AuthContext);
+  const { setUser, googleSignIn, logIn } = useContext(AuthContext);
 
   const handleGoogleLogIn = () => {
     const googleProvider = new GoogleAuthProvider();
@@ -25,7 +25,12 @@ export function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle login logic here
+    logIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -34,13 +39,13 @@ export function Login() {
       <div className="login-container">
         <form className="form" onSubmit={handleSubmit}>
           <h1>Login</h1>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Email:</label>
           <input
             className="input-text"
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <label htmlFor="password">Password:</label>
