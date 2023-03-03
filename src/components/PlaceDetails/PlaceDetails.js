@@ -1,6 +1,6 @@
 import "./PlaceDetails.css";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const PlaceDetails = () => {
   const hotelDetails = useLoaderData();
@@ -11,7 +11,9 @@ const PlaceDetails = () => {
       <p>{name}</p>
       <p>${price}</p>
       <p>{details}</p>
-      <button className="btn-card">Book Now</button>
+      <Link to="/book">
+        <button className="btn-card">Book Now</button>
+      </Link>
     </div>
   );
 };

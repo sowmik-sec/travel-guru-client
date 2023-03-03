@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
+import Book from "../components/Book/Book";
 import Home from "../components/Home/Home";
 import { Login } from "../components/Login/Login";
 import PlaceDetails from "../components/PlaceDetails/PlaceDetails";
 import Places from "../components/Places/Places";
 import SignUp from "../components/SignUp/SignUp";
+import PrivateRoute from "../privateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ export const routes = createBrowserRouter([
         element: <PlaceDetails />,
         loader: ({ params }) =>
           fetch(`https://travel-guru-server.onrender.com/hotels/${params.id}`),
+      },
+      {
+        path: "/book",
+        element: (
+          <PrivateRoute>
+            <Book />
+          </PrivateRoute>
+        ),
       },
     ],
   },
